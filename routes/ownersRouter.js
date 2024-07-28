@@ -3,11 +3,6 @@ const ownerModel = require("../models/owner-model");
 
 const router = express.Router();
 
-// Route for handling GET requests to "/"
-router.get("/", (req, res) => {
-	res.send("hey");
-});
-
 // Only enable the following route in development environment
 if (process.env.NODE_ENV === "development") {
 	// Route for handling POST requests to "/create"
@@ -39,6 +34,13 @@ if (process.env.NODE_ENV === "development") {
 		}
 	});
 }
+
+// Route for handling GET requests to "/"
+
+router.get("/admin", (req, res) => {
+	let success = req.flash("success");
+	res.render("createproducts", { success });
+});
 
 module.exports = router;
 
