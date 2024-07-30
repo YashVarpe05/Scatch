@@ -9,10 +9,13 @@ const userSchema = mongoose.Schema({
 	},
 	email: String,
 	password: String,
-	cart: {
-		type: Array,
-		default: [], // Default value is an empty array
-	},
+	cart: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "product",
+			// default: [], // Default value is an empty array
+		},
+	],
 	// isAdmin: Boolean,
 	orders: {
 		type: Array,

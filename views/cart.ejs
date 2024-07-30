@@ -1,8 +1,10 @@
 <%- include('./partials/header') %>
     <div class="w-full h-screen flex items-start px-20 py-20 gap-10">
         <div class="w-[30%] rounded-md overflow-hidden">
-            <div class="w-full h-80 bg-yellow-500"></div>
-            <div class="w-full flex justify-between px-5 py-4">
+            <div class="w-full h-80 flex justify-center items-center  bg-[#222]">
+                <img src="data:image/jpeg;base64, <%= user.cart[0].image.toString('base64')%>" class="h-[12rem]" alt="">
+            </div>
+            <div class="w-full flex justify-between px-5 py-4 bg-[#555]">
                 <h3 class="text-2xl">Clinge Bag</h3>
                 <div class="flex items-center gap-2">
                     <i class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-add-line"></i>
@@ -10,7 +12,7 @@
                     <i class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-subtract-line"></i>
                 </div>
             </div>
-            <div class="flex items-center justify-between px-5 py-3">
+            <div class="flex items-center justify-between px-5 py-3 bg-[#999]">
                 <h4 class="text-lg">Net Total</h4>
                 <h2 class="text-lg">₹ 1200</h2>
             </div>
