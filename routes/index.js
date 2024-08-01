@@ -19,7 +19,10 @@ router.get("/cart", isloggedin, async (req, res) => {
 	let user = await userModel
 		.findOne({ email: req.user.email })
 		.populate("cart");
-	res.render("cart", { user }); // Pass products to the EJS view
+
+	const bill = Number(user.cart[0].price) + 20 - Number(user.cart[0].discount);
+
+	res.render("cart", { user, bill }); // Pass products to the EJS view
 });
 
 router.get("/addtocart/:productid", isloggedin, async (req, res) => {

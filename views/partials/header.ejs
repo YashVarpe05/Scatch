@@ -15,9 +15,9 @@
         <% var loggedin=typeof loggedin !=='undefined' ? loggedin:true %>
             <% if (loggedin) { %>
                 <div class="flex gap-5">
-                    <a href="">Shop</a>
+                    <a href="/shop">Shop</a>
                     <a href="/cart">Cart</a>
-                    <a href="">My Account</a>
+                    <a href="/account">My Account</a>
                     <a class="text-red-600" href="/users/logout">Logout</a>
                 </div>
                 <% } %>
