@@ -1,29 +1,43 @@
 const mongoose = require("mongoose");
 
 // Define the user schema
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
 	fullname: {
 		type: String,
-		minLength: 3, // Minimum length of 3 characters
+		minlength: 3, // Minimum length of 3 characters
 		trim: true, // Trim leading and trailing spaces
+		required: true, // fullname is required
 	},
-	email: String,
-	password: String,
+	email: {
+		type: String,
+		required: true, // email is required
+	},
+	password: {
+		type: String,
+		required: true, // password is required
+	},
 	cart: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "product",
-			// default: [], // Default value is an empty array
+			ref: "Product",
+			default: [], // Default value is an empty array
 		},
 	],
-	// isAdmin: Boolean,
+	isAdmin: {
+		type: Boolean,
+		default: false, // Default value is false
+	},
 	orders: {
-		type: Array,
+		type: [mongoose.Schema.Types.ObjectId],
+		ref: "Order",
 		default: [], // Default value is an empty array
 	},
-	contact: Number,
+	contact: {
+		type: Number,
+		required: true, // contact is required
+	},
 	picture: String,
 });
 
 // Export the user model
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);

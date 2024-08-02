@@ -5,15 +5,15 @@ const router = express.Router();
 
 // Only enable the following route in development environment
 if (process.env.NODE_ENV === "development") {
-	// Route for handling POST requests to "/create"
+	// Route for handling POST requests to "/owners/create"
 	router.post("/create", async (req, res) => {
 		try {
 			// Check if there are any existing owners
 			let owners = await ownerModel.find();
 			if (owners.length > 0) {
 				return res
-					.status(503)
-					.send("you dont have permission to create a new owner");
+					.status(403)
+					.send("You don't have permission to create a new owner");
 			}
 
 			// Extract data from request body
@@ -35,8 +35,7 @@ if (process.env.NODE_ENV === "development") {
 	});
 }
 
-// Route for handling GET requests to "/"
-
+// Route for handling GET requests to "/owners/admin"
 router.get("/admin", (req, res) => {
 	let success = req.flash("success");
 	res.render("createproducts", { success });
